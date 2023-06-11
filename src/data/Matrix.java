@@ -3,12 +3,12 @@ package data;
 //other functions that may improve this library are: add(s), add(M), subtract(M, N)
 //transpose(M), multiply(M, N), multiply(M), multiply(s), sigmoid(), dsigmoid()
 //fromArray(double[] a), List<Double>toArray()
-public class matrix {
+public class Matrix {
 
     private double[][] data;
     private int label;
 
-    public matrix(double[][] data, int label) {
+    public Matrix(double[][] data, int label) {
         this.data = data;
         this.label = label;
     }

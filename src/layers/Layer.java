@@ -3,9 +3,9 @@ package layers;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class layer {
-    protected layer _nextLayer;
-    protected layer _previousLayer;
+public abstract class Layer {
+    protected Layer _nextLayer;
+    protected Layer _previousLayer;
 
     public abstract double[] getOutput(List<double[][]> input);
     public abstract double[] getOutput(double[] input);
@@ -19,19 +19,19 @@ public abstract class layer {
     public abstract int getOutputCols(); //2d cols
     public abstract int getOutputElements(); //1d
 
-    public layer get_nextLayer() {
+    public Layer get_nextLayer() {
         return _nextLayer;
     }
 
-    public void set_nextLayer(layer _nextLayer) {
+    public void set_nextLayer(Layer _nextLayer) {
         this._nextLayer = _nextLayer;
     }
 
-    public layer get_previousLayer() {
+    public Layer get_previousLayer() {
         return _previousLayer;
     }
 
-    public void set_previousLayer(layer _previousLayer) {
+    public void set_previousLayer(Layer _previousLayer) {
         this._previousLayer = _previousLayer;
     }
 

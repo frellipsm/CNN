@@ -5,13 +5,13 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class reader {
+public class Reader {
 
     private final int rows = 28;
     private final int cols = 28;
 
-    public List<matrix> readData(String path){
-        List<matrix> matrices = new ArrayList<>();
+    public List<Matrix> readData(String path){
+        List<Matrix> matrices = new ArrayList<>();
 
         //read a csv line
         try (BufferedReader dataReader = new BufferedReader(new FileReader(path))) {
@@ -31,7 +31,7 @@ public class reader {
                 }
 
                 //add image to image table
-                matrices.add(new matrix(data, label));
+                matrices.add(new Matrix(data, label));
 
             }
         } catch (Exception e)
