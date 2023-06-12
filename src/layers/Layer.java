@@ -11,8 +11,8 @@ public abstract class Layer {
     public abstract double[] getOutput(double[] input);
 
     //cascade up the chain, derivatives of loss
-    public abstract void backPropogation(List<double[][]> dLoss);
-    public abstract void backPropogation(double[] dLoss);
+    public abstract void backPropagation(List<double[][]> dLoss);
+    public abstract void backPropagation(double[] dLoss);
 
     public abstract int getOutputLength(); //
     public abstract int getOutputRows(); //2d rows

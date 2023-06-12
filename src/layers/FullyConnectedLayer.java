@@ -73,13 +73,13 @@ public class FullyConnectedLayer extends Layer {
     }
 
     @Override
-    public void backPropogation(List<double[][]> dld0) {
+    public void backPropagation(List<double[][]> dld0) {
         double[] vector = matrixToVector(dld0);
-        backPropogation(vector);
+        backPropagation(vector);
     }
 
     @Override
-    public void backPropogation(double[] dld0) {
+    public void backPropagation(double[] dld0) {
 
         double[] dLdx = new double[_inLength];
 
@@ -107,7 +107,7 @@ public class FullyConnectedLayer extends Layer {
             dLdx[k] = dLdX_sum;
         }
         if(_previousLayer != null) {
-            _previousLayer.backPropogation(dLdx);
+            _previousLayer.backPropagation(dLdx);
         }
     }
 
