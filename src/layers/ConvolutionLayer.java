@@ -13,21 +13,22 @@ public class ConvolutionLayer extends Layer{
     private List<double[][]> _filters;
     private int _filterSize;
     private int _stepSize;
-
     private int _inLength;
     private int _inRows;
     private int _inCols;
+    private int _numFilters;
     private double _learningRate;
 
     private List<double[][]> _lastInput;
 
-    public ConvolutionLayer(int _filterSize, int _stepSize, int _inLength, int _inRows, int _inCols, long SEED, double learningRate) {
+    public ConvolutionLayer(int _filterSize, int _stepSize, int _inLength, int _inRows, int _inCols, int _numFilters, double learningRate, long SEED) {
         this._filterSize = _filterSize;
         this._stepSize = _stepSize;
         this._inLength = _inLength;
         this._inRows = _inRows;
         this._inCols = _inCols;
         this.SEED = SEED;
+        this._numFilters = _numFilters;
         _learningRate = learningRate;
     }
 
@@ -78,7 +79,7 @@ public class ConvolutionLayer extends Layer{
         double[][] output = new double[outputRows][outputCols];
 
         int outRow = 0;
-        int outCol = 0;
+        int outCol;
         //window movement
         for (int i = 0; i<=inRows - fRows; i+= stepSize){
             outCol = 0;
@@ -115,7 +116,7 @@ public class ConvolutionLayer extends Layer{
         double[][] output = new double[outputRows][outputCols];
 
         int outRow = 0;
-        int outCol = 0;
+        int outCol;
         //window movement
         for (int i = -fRows + 1; i < inRows; i++){
             outCol = 0;

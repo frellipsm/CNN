@@ -18,7 +18,7 @@ public class FullyConnectedLayer extends Layer {
     private long SEED;
     private final double leak = 0.01;
 
-    public FullyConnectedLayer(int _inLength, int _outLength, long SEED, double learningRate){
+    public FullyConnectedLayer(int _inLength, int _outLength, double learningRate, long SEED){
         this._inLength = _inLength;
         this._outLength = _outLength;
         this.SEED = SEED;

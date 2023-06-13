@@ -13,11 +13,16 @@ import static data.MatrixUtility.multiply;
 public class NeuralNetwork {
 
     List<Layer> _layers;
-    //scaling concerns by factors (or by a scaling layer)
-    double scaleFactor;
+    double scaleFactor;    //scaling concerns by factors (or by a scaling layer)
+
+    public NeuralNetwork(List<Layer> _layers, double scaleFactor) {
+        this._layers = _layers;
+        this.scaleFactor = scaleFactor;
+    }
 
     public NeuralNetwork(List<Layer> _layers){
         this._layers = _layers;
+        this.scaleFactor = 1.0;
         linkLayers();
     }
 
@@ -80,7 +85,7 @@ public class NeuralNetwork {
     public void train (List<Matrix> images){
         for(Matrix img:images){
             List<double[][]> inList = new ArrayList<>();
-            inList.add(img.getData());
+            inList.add(multiply(img.getData(), (1.0/scaleFactor)));
 
             double[] out = _layers.get(0).getOutput(inList);
             double[] dld0 = getErrors(out, img.getLabel()); // dld0, iow: dLoss
