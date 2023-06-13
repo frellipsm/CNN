@@ -16,9 +16,7 @@ public class ConvolutionLayer extends Layer{
     private int _inLength;
     private int _inRows;
     private int _inCols;
-    private int _numFilters;
     private double _learningRate;
-
     private List<double[][]> _lastInput;
 
     public ConvolutionLayer(int _filterSize, int _stepSize, int _inLength, int _inRows, int _inCols, int _numFilters, double learningRate, long SEED) {
@@ -28,7 +26,7 @@ public class ConvolutionLayer extends Layer{
         this._inRows = _inRows;
         this._inCols = _inCols;
         this.SEED = SEED;
-        this._numFilters = _numFilters;
+        generateRandomFilters(_numFilters);
         _learningRate = learningRate;
     }
 

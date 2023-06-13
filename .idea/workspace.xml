@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cc8509d-a1fc-46c1-91e6-33cfe06baed9" name="Changes" comment="unify reorder layer constructors&#10;NetworkBuilder init">
+    <list default="true" id="4cc8509d-a1fc-46c1-91e6-33cfe06baed9" name="Changes" comment="NetworkBuilder  build()">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/NetworkBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/NetworkBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layers/ConvolutionLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/ConvolutionLayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686684181866</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="NetworkBuilder  build()">
+      <created>1686684421877</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1686684421877</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +173,7 @@
     <MESSAGE value="backPropogation, fullConvolve&#10;matrix utilities: flipHorizontal &amp; flipVertical" />
     <MESSAGE value="neural network" />
     <MESSAGE value="unify reorder layer constructors&#10;NetworkBuilder init" />
-    <option name="LAST_COMMIT_MESSAGE" value="unify reorder layer constructors&#10;NetworkBuilder init" />
+    <MESSAGE value="NetworkBuilder  build()" />
+    <option name="LAST_COMMIT_MESSAGE" value="NetworkBuilder  build()" />
   </component>
 </project>
