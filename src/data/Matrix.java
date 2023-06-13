@@ -68,6 +68,16 @@ public class Matrix {
         }
     }
 
+    public static Matrix add(Matrix a, Matrix b){
+        Matrix temp = new Matrix(new double[a.rows][a.cols],a.label);
+        for (int i=0;i<a.rows;i++){
+            for (int j=0;j<a.cols;j++){
+                temp.data[i][j] = a.data[i][j] + b.data[i][j];
+            }
+        }
+        return temp;
+    }
+
     public static Matrix subtract(Matrix a, Matrix b){
         Matrix temp = new Matrix(new double[a.rows][a.cols],a.label);
         for (int i=0;i<a.rows;i++) {

@@ -15,14 +15,18 @@ public class ConvolutionLayer extends Layer{
     private int _inLength;
     private int _inRows;
     private int _inCols;
+    private double _learningRate;
 
-    public ConvolutionLayer(int _filterSize, int _stepSize, int _inLength, int _inRows, int _inCols,long SEED) {
+    private List<double[][]> _lastInput;
+
+    public ConvolutionLayer(int _filterSize, int _stepSize, int _inLength, int _inRows, int _inCols, long SEED, double learningRate) {
         this._filterSize = _filterSize;
         this._stepSize = _stepSize;
         this._inLength = _inLength;
         this._inRows = _inRows;
         this._inCols = _inCols;
         this.SEED = SEED;
+        _learningRate = learningRate;
     }
 
     private void generateRandomFilters(int numFilters){
@@ -45,6 +49,8 @@ public class ConvolutionLayer extends Layer{
 
     //convolution forward pass
     public List<double[][]> convolutionForwardPass(List<double[][]>list){
+        _lastInput = list;
+
         List<double[][]> output = new ArrayList<>();
 
         for (int i=0;i<list.size();i++){
@@ -81,13 +87,32 @@ public class ConvolutionLayer extends Layer{
                     for(int y=0;y<fCols;y++){
                         int inputRowIndex = i + x;
                         int inputColIndex = i + y;
+
                         double value = filter[x][y]*input[inputRowIndex][inputColIndex];
                         sum+=value;
                     }
                 }
+                output[outRow][outCol] = sum;
+                outCol++;
             }
-            output[outRow][outCol] = sum;
-            outCol++;
+            outRow++;
+        }
+        return output;
+    }
+
+    public double[][] spaceArray(double[][] input){
+        if (_stepSize == 1){
+            return input;
+        }
+
+        int outRows = (input.length -1)*_stepSize + 1;
+        int outCols = (input[0].length -1)*_stepSize +1;
+
+        double[][] output = new double[outRows][outCols];
+        for(int i=0;i<input.length;i++){
+            for(int j=0;j<input[0].length;j++){
+                output[i*_stepSize][j*_stepSize] = input[i][j];
+            }
         }
         return output;
     }
@@ -108,11 +133,31 @@ public class ConvolutionLayer extends Layer{
 
     @Override
     public void backPropagation(List<double[][]> dLoss) {
+        //a filter matrix
+        List<double[][]> filtersDelta = new ArrayList<>();
+        List<double[][]> dLd0PreviousLayer = new ArrayList<>();
+
+        for (int i=0;i<_filters.size();i++){
+            filtersDelta.add(new double[_filterSize][_filterSize]);
+        }
+        for (int i=0;i<_lastInput.size();i++){
+            double[][] errorForInput = new double[_inRows][_inCols];
+            for (int f = 0; f < _filters.size();f++){
+                double[][] currFilter = _filters.get(f);
+                double[][] error = dLoss.get(i*_filters.size() + f);
+
+                double[][] spacedError = spaceArray(error);
+                double[][] dldF = convolve(_lastInput.get(i),spacedError, 1);
+
+
+            }
+        }
     }
 
     @Override
     public void backPropagation(double[] dLoss) {
-
+        List<double[][]> matrixInput = vectorToMatrix(dLoss, _inLength, _inRows, _inCols);
+        backPropagation(matrixInput);
     }
 
     @Override
