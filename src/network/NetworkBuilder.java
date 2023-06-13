@@ -5,6 +5,7 @@ import layers.FullyConnectedLayer;
 import layers.Layer;
 import layers.MaxPoolLayer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //a builder passion
@@ -13,10 +14,13 @@ public class NetworkBuilder {
     private int _inputRows;
     private int _inputCols;
     private List<Layer> _layers;
+    private double _scaleFactor;
 
-    public NetworkBuilder(int _inputRows, int _inputCols) {
+    public NetworkBuilder(int _inputRows, int _inputCols, double _scaleFactor) {
         this._inputRows = _inputRows;
         this._inputCols = _inputCols;
+        this._scaleFactor = _scaleFactor;
+        _layers = new ArrayList<>();
     }
 
     public void addConvolutionLayer(int numFilters, int filterSize, int stepSize, double learningRate, long SEED){
@@ -48,6 +52,13 @@ public class NetworkBuilder {
             Layer prev = _layers.get(_layers.size()-1);
             _layers.add(new FullyConnectedLayer(prev.getOutputElements(), prev.getOutputLength(), learningRate, SEED));
         }
+    }
+
+    //lost of error/logic checks possible
+
+    public NeuralNetwork build(){
+        network = new NeuralNetwork(_layers, _scaleFactor);
+        return network;
     }
 
 }
