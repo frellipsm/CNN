@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static data.MatrixUtility.*;
+
 public class ConvolutionLayer extends Layer{
 
     private long SEED;
@@ -100,6 +102,46 @@ public class ConvolutionLayer extends Layer{
         return output;
     }
 
+    private double[][] fullConvolve(double[][] input, double[][] filter) {
+        int outputRows = (input.length + filter.length) + 1;
+        int outputCols = (input[0].length + filter[0].length) + 1;
+
+        int inRows = input.length;
+        int inCols = input[0].length;
+
+        int fRows = filter.length;
+        int fCols = filter[0].length;
+
+        double[][] output = new double[outputRows][outputCols];
+
+        int outRow = 0;
+        int outCol = 0;
+        //window movement
+        for (int i = -fRows + 1; i < inRows; i++){
+            outCol = 0;
+            double sum = 0.0;
+            for(int j = -fCols + 1; j < inCols; j++){
+                //Apply Filter to position (x,y)
+                for (int x=0;x<fRows;x++){
+                    for(int y=0;y<fCols;y++){
+                        int inputRowIndex = i + x;
+                        int inputColIndex = i + y;
+
+                        if(inputRowIndex >= 0 && inputColIndex >= 0 && inputRowIndex < inRows && inputColIndex < inCols) {
+                            double value = filter[x][y] * input[inputRowIndex][inputColIndex];
+                            sum += value;
+                        }
+                    }
+                }
+                output[outRow][outCol] = sum;
+                outCol++;
+            }
+            outRow++;
+        }
+        return output;
+    }
+
+
     public double[][] spaceArray(double[][] input){
         if (_stepSize == 1){
             return input;
@@ -135,7 +177,7 @@ public class ConvolutionLayer extends Layer{
     public void backPropagation(List<double[][]> dLoss) {
         //a filter matrix
         List<double[][]> filtersDelta = new ArrayList<>();
-        List<double[][]> dLd0PreviousLayer = new ArrayList<>();
+        List<double[][]> dLd0PreviousLayer = new ArrayList<>(); //errors of previous layer
 
         for (int i=0;i<_filters.size();i++){
             filtersDelta.add(new double[_filterSize][_filterSize]);
@@ -147,12 +189,31 @@ public class ConvolutionLayer extends Layer{
                 double[][] error = dLoss.get(i*_filters.size() + f);
 
                 double[][] spacedError = spaceArray(error);
-                double[][] dldF = convolve(_lastInput.get(i),spacedError, 1);
+                double[][] dLdF = convolve(_lastInput.get(i),spacedError, 1);
 
+                double[][] delta = multiply(dLdF, _learningRate*-1);
+                double[][] newTotalDelta = add(filtersDelta.get(f), delta);
+                filtersDelta.set(f, newTotalDelta);
 
+                double[][] flippedError = flipHorizontal(flipVertical(spacedError));
+                errorForInput = add(errorForInput, fullConvolve(currFilter, flippedError));
             }
+            dLd0PreviousLayer.add(errorForInput);
+
         }
+        for (int  f = 0; f < _filters.size(); f++){
+            double[][] modified = add(filtersDelta.get(f), _filters.get(f));
+            _filters.set(f,modified);
+        }
+        if(_previousLayer!=null){
+            _previousLayer.backPropagation(dLd0PreviousLayer);
+        }
+
     }
+
+    //flip matrix horizontal
+
+    //flip matrix vertical
 
     @Override
     public void backPropagation(double[] dLoss) {
