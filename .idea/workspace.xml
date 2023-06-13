@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cc8509d-a1fc-46c1-91e6-33cfe06baed9" name="Changes" comment="fully connected layer&#10;start of ui">
-      <change afterPath="$PROJECT_DIR$/src/layers/ConvolutionLayer.java" afterDir="false" />
+    <list default="true" id="4cc8509d-a1fc-46c1-91e6-33cfe06baed9" name="Changes" comment="start matrix utility, convolutionlayer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layers/ConvolutionLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/ConvolutionLayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686601083049</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="start matrix utility, convolutionlayer">
+      <created>1686627769155</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686627769155</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -117,6 +124,7 @@
     <MESSAGE value="FullyConnectedLayer" />
     <MESSAGE value="workspace" />
     <MESSAGE value="fully connected layer&#10;start of ui" />
-    <option name="LAST_COMMIT_MESSAGE" value="fully connected layer&#10;start of ui" />
+    <MESSAGE value="start matrix utility, convolutionlayer" />
+    <option name="LAST_COMMIT_MESSAGE" value="start matrix utility, convolutionlayer" />
   </component>
 </project>

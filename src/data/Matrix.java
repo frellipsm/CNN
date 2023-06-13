@@ -9,14 +9,35 @@ package data;
 public class Matrix {
 
     private double[][] data;
-    private int label;
     private int rows, cols;
+    private int label;
 
+    public int getRows() {
+        return rows;
+    }
+
+    public int getCols() {
+        return cols;
+    }
+
+    //constructor; double[][] data, int label. construct a Matrix based on incoming data
     public Matrix(double[][] data, int label) {
         this.data = data;
         this.label = label;
         this.rows = data.length;
         this.cols = data[0].length;
+    }
+    //constructor; generate matrix of size int x, int y, populated by random values [-1,1]
+    public Matrix(int rows, int cols){
+        this.data = new double[rows][cols];
+        this.rows = rows;
+        this.cols = cols;
+        this.label = -1;
+        for (int i=0; i < rows; i++){
+            for (int j=0; j < cols; j++){
+                data[i][j]=Math.random()*2-1;
+            }
+        }
     }
 
     public double[][] getData() {
