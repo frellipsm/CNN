@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cc8509d-a1fc-46c1-91e6-33cfe06baed9" name="Changes" comment="NetworkBuilder  build()">
+    <list default="true" id="4cc8509d-a1fc-46c1-91e6-33cfe06baed9" name="Changes" comment="ConvolutionLayer fix _filters, run generateRandomFilters in constructor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layers/ConvolutionLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/ConvolutionLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layers/FullyConnectedLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/FullyConnectedLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layers/MaxPoolLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/MaxPoolLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/NetworkBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/NetworkBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/NeuralNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/NeuralNetwork.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +24,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/network/NeuralNetwork.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -38,11 +45,14 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-18",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+    "last_opened_file_path": "C:/Users/phelot/Downloads/CNN_Tutorial-main/CNN_Tutorial-main/src/network/NeuralNetwork.java",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "two.files.diff.last.used.file": "C:/Users/phelot/Downloads/CNN_Tutorial-main/CNN_Tutorial-main/src/network/NeuralNetwork.java"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\phelot\Develop\Project\CNN\src\layers" />
       <recent name="C:\Users\phelot\Develop\Project\CNN\src" />
     </key>
   </component>
@@ -148,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686684421877</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="ConvolutionLayer fix _filters, run generateRandomFilters in constructor">
+      <created>1686685799581</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1686685799581</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,6 +191,17 @@
     <MESSAGE value="neural network" />
     <MESSAGE value="unify reorder layer constructors&#10;NetworkBuilder init" />
     <MESSAGE value="NetworkBuilder  build()" />
-    <option name="LAST_COMMIT_MESSAGE" value="NetworkBuilder  build()" />
+    <MESSAGE value="ConvolutionLayer fix _filters, run generateRandomFilters in constructor" />
+    <option name="LAST_COMMIT_MESSAGE" value="ConvolutionLayer fix _filters, run generateRandomFilters in constructor" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" log-message="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
