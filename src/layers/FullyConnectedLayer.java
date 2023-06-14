@@ -23,10 +23,10 @@ public class FullyConnectedLayer extends Layer {
         this._outLength = _outLength;
         this.SEED = SEED;
         this._learningRate = learningRate;
-        setRandomWeights(); //place for testing to set a determined weight
 
         _weights = new double[_inLength][_outLength];
-        //random variation;
+        setRandomWeights(); //place for testing to set a determined weight
+
     }
 
     //forward pass of a vector
@@ -49,7 +49,7 @@ public class FullyConnectedLayer extends Layer {
         for(int i=0; i < _inLength; i++){
             for(int j=0; j < _outLength; j++){
                 //bounding by activation function
-                out[j] += reLu(z[j]);
+                out[j] = reLu(z[j]);
             }
         }
         return out;

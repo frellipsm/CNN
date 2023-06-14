@@ -22,12 +22,12 @@ public class MaxPoolLayer extends Layer{
         this._inLength  = _inLength;
         this._inRows = _inRows;
         this._inCols = _inCols;
-        this._lastMaxRow = new ArrayList<>();
-        this._lastMaxCol = new ArrayList<>();
     }
 
     public List<double[][]> maxPoolForwardPass(List<double[][]>input){
         List<double[][]> output = new ArrayList<>();
+        _lastMaxRow = new ArrayList<>();
+        _lastMaxCol = new ArrayList<>();
 
         for(int i = 0;i < input.size(); i++){
             output.add(pool(input.get(i)));
@@ -68,46 +68,43 @@ public class MaxPoolLayer extends Layer{
 
     @Override
     public double[] getOutput(List<double[][]> input) {
-        List<double[][]> outputPool = maxPoolForwardPass(input);
-        return _nextLayer.getOutput(outputPool);
+        return _nextLayer.getOutput(maxPoolForwardPass(input));
     }
 
     @Override
     public double[] getOutput(double[] input) {
-        List<double[][]> matrixList = vectorToMatrix(input, _inLength, _inRows, _inCols);
-        return getOutput(matrixList);
+        return getOutput(vectorToMatrix(input, _inLength, _inRows, _inCols));
+    }
+
+    @Override
+    public void backPropagation(double[] dLoss) {
+        backPropagation(vectorToMatrix(dLoss, getOutputLength(), getOutputRows(), getOutputCols()));
     }
 
     @Override
     public void backPropagation(List<double[][]> dLoss) {
         List<double[][]> dXdL = new ArrayList<>();
         int l = 0;
-        for (double[][] array: dLoss) {
-            double[][] error = new double [_inRows][_inCols];
+        for(double[][] array: dLoss) {
+            double[][] error = new double[_inRows][_inCols];
 
             for(int r = 0; r < getOutputRows(); r++){
-                for (int c = 0; c < getOutputCols(); c++){
+                for(int c = 0; c < getOutputCols(); c++){
                     int max_i = _lastMaxRow.get(l)[r][c];
                     int max_j = _lastMaxCol.get(l)[r][c];
 
-                    if (max_i != -1){
+                    if(max_i != -1){
                         error[max_i][max_j] += array[r][c];
                     }
                 }
             }
-            //
+
             dXdL.add(error);
             l++;
         }
-        if(_previousLayer != null){
+        if(_previousLayer!= null){
             _previousLayer.backPropagation(dXdL);
         }
-    }
-
-    @Override
-    public void backPropagation(double[] dLoss) {
-        List<double[][]> matrixList = vectorToMatrix(dLoss, getOutputLength(), getOutputRows(), getOutputCols());
-        backPropagation(matrixList);
     }
 
     @Override
@@ -129,6 +126,4 @@ public class MaxPoolLayer extends Layer{
     public int getOutputElements() {
         return getOutputLength()*getOutputRows()*getOutputCols();
     }
-    //retrieving dl/d0 from maximal errors within a window, for backpropagation
-
 }
