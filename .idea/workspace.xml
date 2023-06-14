@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cc8509d-a1fc-46c1-91e6-33cfe06baed9" name="Changes" comment="NeuralNetwork constructor() add &quot;linkLayers()&quot;">
+    <list default="true" id="4cc8509d-a1fc-46c1-91e6-33cfe06baed9" name="Changes" comment="FullyConnectedLayer: _weights setRandomWeights correct ooo after instantiation.&#10;MaxPoolLayer: flatten getOutput. _lastMaxRow, _lastMaxCol instantiation during maxPoolForwardPass">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layers/ConvolutionLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/ConvolutionLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layers/FullyConnectedLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/FullyConnectedLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layers/MaxPoolLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/layers/MaxPoolLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/NetworkBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/NetworkBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/NeuralNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/NeuralNetwork.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +23,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/layers/ConvolutionLayer.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/layers/FullyConnectedLayer.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/layers/MaxPoolLayer.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/network/NetworkBuilder.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/network/NeuralNetwork.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -180,7 +178,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686722961904</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fullConvolve, sum reset properly within filter window shift. getOutputRows/getOutputCols correct calculating operation">
+      <created>1686743006509</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1686743006509</updated>
+    </task>
+    <task id="LOCAL-00016" summary="FullyConnectedLayer: _weights setRandomWeights correct ooo after instantiation.&#10;MaxPoolLayer: flatten getOutput. _lastMaxRow, _lastMaxCol instantiation during maxPoolForwardPass">
+      <created>1686743218943</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1686743218943</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -208,7 +220,9 @@
     <MESSAGE value="NetworkBuilder  build()" />
     <MESSAGE value="ConvolutionLayer fix _filters, run generateRandomFilters in constructor" />
     <MESSAGE value="NeuralNetwork constructor() add &quot;linkLayers()&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="NeuralNetwork constructor() add &quot;linkLayers()&quot;" />
+    <MESSAGE value="fullConvolve, sum reset properly within filter window shift. getOutputRows/getOutputCols correct calculating operation" />
+    <MESSAGE value="FullyConnectedLayer: _weights setRandomWeights correct ooo after instantiation.&#10;MaxPoolLayer: flatten getOutput. _lastMaxRow, _lastMaxCol instantiation during maxPoolForwardPass" />
+    <option name="LAST_COMMIT_MESSAGE" value="FullyConnectedLayer: _weights setRandomWeights correct ooo after instantiation.&#10;MaxPoolLayer: flatten getOutput. _lastMaxRow, _lastMaxCol instantiation during maxPoolForwardPass" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
