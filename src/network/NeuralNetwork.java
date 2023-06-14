@@ -22,14 +22,14 @@ public class NeuralNetwork {
     }
 
     private void linkLayers(){
-        if (_layers.size() <= 1){
+        if(_layers.size() <= 1){
             return;
         }
         for(int i = 0; i < _layers.size();i++){
-            if (i==0) {
+            if(i==0){
                 _layers.get(i).set_nextLayer(_layers.get(i+1));
-            } else if (i == _layers.size() -1) {
-                _layers.get(i).set_previousLayer(_layers.get(i - 1));
+            } else if (i == _layers.size()-1){
+                _layers.get(i).set_previousLayer(_layers.get(i-1));
             } else {
                 _layers.get(i).set_previousLayer(_layers.get(i-1));
                 _layers.get(i).set_nextLayer(_layers.get(i+1));

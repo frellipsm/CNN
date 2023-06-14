@@ -27,7 +27,6 @@ public class NetworkBuilder {
         //first?
         if(_layers.isEmpty()){
             _layers.add(new ConvolutionLayer(filterSize, stepSize, 1, _inputRows, _inputCols, numFilters, learningRate, SEED));
-            //int _filterSize, int _stepSize, int _inLength, int _inRows, int _inCols, long SEED, int _numFilters, double learningRate
         } else {
             Layer prev = _layers.get(_layers.size()-1);
             _layers.add(new ConvolutionLayer(filterSize, stepSize, prev.getOutputLength(), prev.getOutputRows(), prev.getOutputCols(), numFilters, learningRate, SEED));
@@ -37,20 +36,20 @@ public class NetworkBuilder {
         //first?
         if(_layers.isEmpty()){
             _layers.add(new MaxPoolLayer(windowSize, stepSize, 1, _inputRows, _inputCols));
-            //int _windowSize, int _stepSize, int _inLength, int _inRows, int _inCols
+            //int _windowSize, int _stepSize, int _inLength, int _inRows, int _inCol
         } else {
             Layer prev = _layers.get(_layers.size()-1);
-            _layers.add(new MaxPoolLayer(stepSize, windowSize, prev.getOutputLength(), prev.getOutputRows(), prev.getOutputCols()));
+            _layers.add(new MaxPoolLayer(windowSize, stepSize, prev.getOutputLength(), prev.getOutputRows(), prev.getOutputCols()));
         }
     }
     public void addFullyConnectedLayer(int outLength, double learningRate, long SEED){
         //first?
         if(_layers.isEmpty()){
             _layers.add(new FullyConnectedLayer(_inputCols*_inputRows, outLength, learningRate, SEED));
-            //int _inLength, int _outLength, double learningRate, long SEED
+
         } else {
             Layer prev = _layers.get(_layers.size()-1);
-            _layers.add(new FullyConnectedLayer(prev.getOutputElements(), prev.getOutputLength(), learningRate, SEED));
+            _layers.add(new FullyConnectedLayer(prev.getOutputElements(), outLength, learningRate, SEED));
         }
     }
 
