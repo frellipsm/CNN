@@ -18,11 +18,6 @@ public class NeuralNetwork {
     public NeuralNetwork(List<Layer> _layers, double scaleFactor) {
         this._layers = _layers;
         this.scaleFactor = scaleFactor;
-    }
-
-    public NeuralNetwork(List<Layer> _layers){
-        this._layers = _layers;
-        this.scaleFactor = 1.0;
         linkLayers();
     }
 
@@ -33,13 +28,19 @@ public class NeuralNetwork {
         for(int i = 0; i < _layers.size();i++){
             if (i==0) {
                 _layers.get(i).set_nextLayer(_layers.get(i+1));
-            } else if (i == _layers.size() - 1) {
+            } else if (i == _layers.size() -1) {
                 _layers.get(i).set_previousLayer(_layers.get(i - 1));
             } else {
                 _layers.get(i).set_previousLayer(_layers.get(i-1));
                 _layers.get(i).set_nextLayer(_layers.get(i+1));
             }
         }
+    }
+
+    public NeuralNetwork(List<Layer> _layers){
+        this._layers = _layers;
+        this.scaleFactor = 1.0;
+        linkLayers();
     }
 
     public double[] getErrors(double[] networkOutput, int correctAnswer){
@@ -65,10 +66,11 @@ public class NeuralNetwork {
 
     public int guess(Matrix image){
         List<double[][]> inList = new ArrayList<>();
-        inList.add(multiply(image.getData(), 1.0/scaleFactor));
+        inList.add(multiply(image.getData(), (1.0/scaleFactor)));
 
         double[] out = _layers.get(0).getOutput(inList);
-        return getMaxIndex(out); //guess
+        int guess = getMaxIndex(out); //guess
+        return guess;
     }
 
     public float test(List<Matrix> images){
